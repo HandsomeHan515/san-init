@@ -11,14 +11,15 @@ module.exports = merge(baseConfig, {
         new CleanWebpackPlugin(),
     ],
     optimization: {
-        minimize: true, // 是否压缩打包文件 默认为 true
+        minimize: false, // 是否压缩打包文件 默认为 true
         minimizer: [
             new TerserPlugin({
                 test: /\.js(\?.*)?$/i,
                 sourceMap: false,
                 parallel: os.cpus().length - 1,
-                exclude: /\/san|\/jquery/, // 不压缩 san、san-router 和 jquery
+                exclude: [/\/san/, /\/jquery/], // 不压缩 san、san-router 和 jquery
                 terserOptions: {
+                    ie8: true,
                     output: {
                         comments: false,
                     },
@@ -36,7 +37,7 @@ module.exports = merge(baseConfig, {
             cacheGroups: {
                 san: {
                     name: 'san',
-                    test: /[\\/]node_modules[\\/]san/,
+                    test: /[\\/]node_modules[\\/](san[\\/]dist|san-router)/,
                     priority: 20,
                 },
                 jquery: {
@@ -47,7 +48,7 @@ module.exports = merge(baseConfig, {
                 vendor: {
                     name: "vendor",
                     test: /[\\/]node_modules[\\/]/,
-                    priority: -10
+                    priority: -10,
                 },
                 common: {
                     test: /[\\/]src[\\/]/,

@@ -10,5 +10,10 @@ export default san.defineComponent({
         return {
             name: 'This is Add!'
         }
+    },
+    attached() {
+        const arr = [1, 2, 3]
+        let i = arr.includes(2)
+        console.log(i)
     }
 })

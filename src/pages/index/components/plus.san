@@ -8,6 +8,9 @@
             return {
                 name: 'San'
             };
+        },
+        attached() {
+            console.log($('.content'))
         }
     };
 </script>

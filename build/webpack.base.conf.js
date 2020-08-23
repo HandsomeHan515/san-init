@@ -19,7 +19,8 @@ module.exports = {
             'san$': isDev ? 'san/dist/san.dev.js' : 'san/dist/san.min.js',
             'san-router$': isDev ? 'san-router/index.js' : 'san-router/dist/san-router.js',
             'jquery$': 'jquery/dist/jquery.min.js'
-        }
+        },
+        modules: ['node_modules']
     },
     module: {
         noParse: /jquery/,
