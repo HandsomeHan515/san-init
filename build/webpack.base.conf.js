@@ -17,10 +17,8 @@ module.exports = {
         alias: {
             '@': resolve('src'),
             'san$': isDev ? 'san/dist/san.dev.js' : 'san/dist/san.min.js',
-            'san-router$': isDev ? 'san-router/index.js' : 'san-router/dist/san-router.js',
             'jquery$': 'jquery/dist/jquery.min.js'
-        },
-        modules: ['node_modules']
+        }
     },
     module: {
         noParse: /jquery/,
@@ -32,7 +30,7 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                include: [resolve('src')],
+                include: [resolve('src'), resolve('node_modules/san-loader')],
                 loader: 'babel-loader',
             },
             {

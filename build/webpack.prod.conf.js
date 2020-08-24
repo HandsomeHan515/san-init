@@ -11,7 +11,7 @@ module.exports = merge(baseConfig, {
         new CleanWebpackPlugin(),
     ],
     optimization: {
-        minimize: false, // 是否压缩打包文件 默认为 true
+        minimize: true, // 是否压缩打包文件 默认为 true
         minimizer: [
             new TerserPlugin({
                 test: /\.js(\?.*)?$/i,
@@ -37,7 +37,7 @@ module.exports = merge(baseConfig, {
             cacheGroups: {
                 san: {
                     name: 'san',
-                    test: /[\\/]node_modules[\\/](san[\\/]dist|san-router)/,
+                    test: /[\\/]node_modules[\\/](san[\\/]dist)/,
                     priority: 20,
                 },
                 jquery: {
